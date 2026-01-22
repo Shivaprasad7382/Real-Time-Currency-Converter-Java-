@@ -1,85 +1,106 @@
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
+# 💱 Real-Time Currency Converter (Java)
 
-public class CurrencyConverter {
+A **command-line based Currency Converter** built using **Java**, designed to simulate real-time currency conversion with support for favorite currencies and dynamic exchange rate updates.
 
-    private static final String API_BASE_URL = "https://api.exchangerate.host/latest";
-    private static final Scanner scanner = new Scanner(System.in);
-    private static final Map<String, Double> exchangeRates = new HashMap<>();
+This project demonstrates **Java fundamentals, collections, user input handling, and API-based design**.
 
-    public static void main(String[] args) {
-        System.out.println("Welcome to the Real-Time Currency Converter!");
+---
 
-        while (true) {
-            System.out.print("> ");
-            String input = scanner.nextLine();
+## 🚀 Features
 
-            if (input.equalsIgnoreCase("exit")) {
-                System.out.println("Exiting Currency Converter. Goodbye!");
-                break;
-            }
+- 🔄 Convert currency amounts between different currencies
+- ⭐ Add and manage favorite currencies
+- 👀 View saved favorite currencies
+- 🔁 Update exchange rates (API-ready structure)
+- 🖥 Interactive command-line interface (CLI)
+- ♻ Clean and modular Java code
 
-            processCommand(input);
-        }
-    }
+---
 
-    private static void processCommand(String input) {
-        String[] commandArgs = input.split(" ");
-        String command = commandArgs[0].toLowerCase();
+## 🛠️ Tech Stack
 
-        switch (command) {
-            case "add":
-                addFavoriteCurrency(commandArgs);
-                break;
-            case "view":
-                viewFavoriteCurrencies();
-                break;
-            case "update":
-                updateExchangeRates();
-                break;
-            case "convert":
-                convertCurrency(commandArgs);
-                break;
-            default:
-                System.out.println("Invalid command. Try again.");
-        }
-    }
+- **Java**
+- **Java Collections (HashMap)**
+- **Scanner (User Input)**
+- **REST API-ready architecture**
+- **ExchangeRate.host API** (planned integration)
 
-    private static void addFavoriteCurrency(String[] commandArgs) {
-        if (commandArgs.length < 2) {
-            System.out.println("Usage: add <currency>");
-            return;
-        }
+---
 
-        String currency = commandArgs[1].toUpperCase();
-        exchangeRates.put(currency, 1.0); // Assuming 1.0 for simplicity
-        System.out.println("Added " + currency + " to favorites.");
-    }
+## 📂 Project Structure
 
-    private static void viewFavoriteCurrencies() {
-        System.out.println("Favorite currencies: " + String.join(", ", exchangeRates.keySet()));
-    }
+CurrencyConverter/
+│
+└── CurrencyConverter.java
 
-    private static void updateExchangeRates() {
-        // Implement logic to fetch and update exchange rates from the API
-        System.out.println("Exchange rates updated.");
-    }
 
-    private static void convertCurrency(String[] commandArgs) {
-        if (commandArgs.length < 4) {
-            System.out.println("Usage: convert <amount> <fromCurrency> <toCurrency>");
-            return;
-        }
 
-        double amount = Double.parseDouble(commandArgs[1]);
-        String fromCurrency = commandArgs[2].toUpperCase();
-        String toCurrency = commandArgs[3].toUpperCase();
+---
 
-        double fromRate = exchangeRates.getOrDefault(fromCurrency, 1.0);
-        double toRate = exchangeRates.getOrDefault(toCurrency, 1.0);
+## ⚙️ How to Run
 
-        double convertedAmount = amount * (toRate / fromRate);
-        System.out.printf("%.2f %s is approximately %.2f %s%n", amount, fromCurrency, convertedAmount, toCurrency);
-    }
-}
+1. Ensure Java is installed  
+   ```bash
+   java -version
+Compile the program
+
+bash
+Copy code
+javac CurrencyConverter.java
+Run the application
+
+bash
+Copy code
+java CurrencyConverter
+🧾 Available Commands
+Command	Description
+add USD	Add a currency to favorites
+view	View favorite currencies
+update	Update exchange rates
+convert 100 USD INR	Convert currency
+exit	Exit the application
+
+💡 Example Usage
+pgsql
+Copy code
+> add USD
+Added USD to favorites.
+
+> add INR
+Added INR to favorites.
+
+> convert 100 USD INR
+100.00 USD is approximately 100.00 INR
+🎯 Learning Outcomes
+Working with Java collections (HashMap)
+
+Command-line input handling using Scanner
+
+Modular program design
+
+Currency conversion logic
+
+API-based application structure
+
+Writing clean and maintainable Java code
+
+🔮 Future Enhancements
+🌐 Real-time API integration using HTTP requests
+
+💾 Save favorites to file or database
+
+📊 Display exchange rate tables
+
+🧪 Input validation & error handling
+
+🖼 GUI version using JavaFX / Swing
+
+👤 Author
+Shivaprasad Chinthoju
+
+Email: shivaprasad7382@gmail.com
+
+LinkedIn: https://www.linkedin.com/in/shiva-prasad-chinthoju-87419b235/
+
+⭐ Support
+If you find this project useful, please ⭐ the repository to support my work!
